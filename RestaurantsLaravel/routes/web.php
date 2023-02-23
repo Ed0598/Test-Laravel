@@ -21,13 +21,12 @@ Route::get ('/hello/{name}',function(){
     return view('hello',compact('name'));
 });
 
-Route::get('/restaurants/create',function(){
-    return view('restaurants.create');
-});
+Route::get('/restaurants/create',[RestaurantController::class,'create']);
 
-Route::get('/restaurant/show/{id}', function ($id) {
-    return view('restaurants.show', ['id' => $id]);
-});
+Route::post('restaurants/create',[RestaurantController::class,'store']);
+
+Route::get('/restaurants/{restaurant}',[RestaurantController::class,'show']);
 
 Route::get('/restaurants', [RestaurantController::class, 'index']);
-    return view('restaurants.index');
+
+

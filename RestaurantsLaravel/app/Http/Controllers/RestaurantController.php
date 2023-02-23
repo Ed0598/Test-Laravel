@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Restaurant;
 
 class RestaurantController extends Controller
 {
@@ -11,7 +12,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        //
+        return view ('restaurants.index',['restaurants'=>Restaurant::latest()->get()]);
     }
 
     /**
@@ -19,7 +20,8 @@ class RestaurantController extends Controller
      */
     public function create()
     {
-        //
+        return view('restaurants.create');
+
     }
 
     /**
@@ -27,15 +29,17 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Restaurant::create([
+            'name'=>$request
+        ]);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Restaurant $restaurant)
     {
-        //
+        return view('restaurants.show',['restaurant'=>$restaurant]);
     }
 
     /**
