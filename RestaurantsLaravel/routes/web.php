@@ -23,6 +23,6 @@ Route::get('/restaurants', [RestaurantController::class, 'index']);
 
 Route::get('/restaurants/edit/{restaurant}', [RestaurantController::class,'edit']);
 
-Route::get('/restaurants/{restaurant}', [RestaurantController::class,'update']);
+Route::patch('/restaurants/edit/{restaurant}', [RestaurantController::class,'update']);
 
 

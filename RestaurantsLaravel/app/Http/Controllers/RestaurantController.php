@@ -29,9 +29,8 @@ class RestaurantController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-
         Restaurant::create([
             'name'=>$request['name'],
             'address'=>$request['address'],
@@ -63,10 +62,19 @@ class RestaurantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,$id)
     {
-        //
-    }
+        $restaurant = Restaurant::find($id);
+        $restaurant->name = $request->input('name');
+        $restaurant->address = $request->input('address');
+        $restaurant->zipCode = $request->input('zipCode');
+        $restaurant->town = $request->input('town');
+        $restaurant->country = $request->input('country');
+        $restaurant->description = $request->input('description');
+        $restaurant->review = $request->input('review');
+        $restaurant->save();
+        
+        }
 
     /**
      * Remove the specified resource from storage.
