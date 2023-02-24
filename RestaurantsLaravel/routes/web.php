@@ -13,14 +13,6 @@ use App\Http\Controllers\RestaurantController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get ('/hello/{name}',function(){
-    return view('hello',compact('name'));
-});
-
 Route::get('/restaurants/create',[RestaurantController::class,'create']);
 
 Route::post('restaurants/create',[RestaurantController::class,'store']);
@@ -28,5 +20,9 @@ Route::post('restaurants/create',[RestaurantController::class,'store']);
 Route::get('/restaurants/{restaurant}',[RestaurantController::class,'show']);
 
 Route::get('/restaurants', [RestaurantController::class, 'index']);
+
+Route::get('/restaurants/edit/{restaurant}', [RestaurantController::class,'edit']);
+
+Route::get('/restaurants/{restaurant}', [RestaurantController::class,'update']);
 
 
