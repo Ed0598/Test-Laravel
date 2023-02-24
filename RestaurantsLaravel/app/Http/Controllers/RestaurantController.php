@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreatePostRequest;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
+
 
 class RestaurantController extends Controller
 {
@@ -29,9 +31,17 @@ class RestaurantController extends Controller
      */
     public function store(Request $request)
     {
+
         Restaurant::create([
-            'name'=>$request
+            'name'=>$request['name'],
+            'address'=>$request['address'],
+            'zipCode'=>$request['zipCode'],
+            'town'=>$request['town'],
+            'country'=>$request['country'],
+            'description'=>$request['description'],
+            'review'=>$request['review'],
         ]);
+
     }
 
     /**
@@ -45,9 +55,9 @@ class RestaurantController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Restaurant $restaurant)
     {
-        //
+        return view('restaurants.edit',['restaurant'=>$restaurant]);
     }
 
     /**

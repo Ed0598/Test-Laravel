@@ -1,5 +1,8 @@
 <form action="/restaurants/create" method="post">
     @csrf
+    <!-- @if($errors->has('name'))
+        <small class ='error'>{{$error->first('name')}}</small>
+        @endif -->
     <label for="name">Name of the Restaurant </label>
     <input type="text" name='name' id='name'>
     <label for="address">Address of the Restaurant </label>
@@ -15,5 +18,4 @@
     <label for="review">Review of the Restaurant </label>
     <input type="text" name='review' id='review'>
     <input type="submit" value="Submit"></input>
-
 </form>
