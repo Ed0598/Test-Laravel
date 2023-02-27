@@ -19,10 +19,17 @@
                 <p class="text-gray-500 text-sm mb-2">{{ $restaurant->country }}</p>
                 <p class="text-gray-700 mb-4 text-center">{{ $restaurant->description }}</p>
             </div>
-            <button><a href="/restaurants/edit/{restaurant}">Edit</a></button>
+            <form action="/restaurants/edit/{{$restaurant->id}}" method="get">
+                <input type="submit" name="edit" id="edit" value="Edit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            </form>
+
+            <form action='/restaurants/delete/{{$restaurant->id}}' method='delete'>
+                @method('DELETE')
+                <input type="submit" name="delete" id="delete" value="Delete" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-4">
+            </form>  
         </div>
-    @endforeach
     </div>
+    @endforeach
     <div class="flex justify-center">
         <form action="/restaurants/create" method="get">
             <input type="submit" name="add" id="add" value="Ajouter un restaurant" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-8 mb-8">

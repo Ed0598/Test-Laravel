@@ -40,6 +40,7 @@ class RestaurantController extends Controller
             'description'=>$request['description'],
             'review'=>$request['review'],
         ]);
+        return redirect('/restaurants');
 
     }
 
@@ -73,14 +74,17 @@ class RestaurantController extends Controller
         $restaurant->description = $request->input('description');
         $restaurant->review = $request->input('review');
         $restaurant->save();
+
+        return redirect('/restaurants');
         
-        }
+    }
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
-        //
+        Restaurant::destroy($id);
+        return redirect('/restaurants');
     }
 }

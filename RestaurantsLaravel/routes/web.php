@@ -21,8 +21,11 @@ Route::get('/restaurants/{restaurant}',[RestaurantController::class,'show']);
 
 Route::get('/restaurants', [RestaurantController::class, 'index']);
 
+Route::delete('restaurants/delete/{restaurant}',[RestaurantController::class,'destroy']);
+
 Route::get('/restaurants/edit/{restaurant}', [RestaurantController::class,'edit']);
 
 Route::patch('/restaurants/edit/{restaurant}', [RestaurantController::class,'update']);
+
 
 
