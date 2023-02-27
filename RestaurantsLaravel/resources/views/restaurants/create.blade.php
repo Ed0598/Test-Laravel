@@ -1,8 +1,12 @@
 <form action="/restaurants/create" method="post">
     @csrf
-    <!-- @if($errors->has('name'))
-        <small class ='error'>{{$error->first('name')}}</small>
-        @endif -->
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger" role="alert">
+                {{$error}}
+            </div> )
+        @endforeach
+    @endif
     <label for="name">Name of the Restaurant </label>
     <input type="text" name='name' id='name'>
     <label for="address">Address of the Restaurant </label>

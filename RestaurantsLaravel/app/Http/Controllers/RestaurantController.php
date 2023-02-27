@@ -29,8 +29,17 @@ class RestaurantController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request, $id)
+    public function store(Request $request)
     {
+        $request->validate([
+            'name'=>'required|min:3',
+            'address'=>'required',
+            'zipCode'=>'required|numeric',
+            'town'=>'required',
+            'country'=>'required',
+            'description'=>'required',
+            'review'=>'required|numeric',
+        ]);
         Restaurant::create([
             'name'=>$request['name'],
             'address'=>$request['address'],
