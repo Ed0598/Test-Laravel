@@ -84,7 +84,8 @@ class RestaurantController extends Controller
      */
     public function destroy(string $id)
     {
-        Restaurant::destroy($id);
+        // dd($id);
+       Restaurant::destroy($id);
         return redirect('/restaurants');
     }
 }
